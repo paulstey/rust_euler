@@ -1,8 +1,8 @@
 
-extern crate prob3;
+// extern crate prob3;
 
-use self::prob3::primes;
+use prob3::primes;
 
 fn main() {
-    println!("{:?}", primes::primes(1300));
+    println!("{:?}", primes::primes(13000));
 }
