@@ -5,3 +5,4 @@ authors = ["paulstey <paulstey@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+time = "0.1.42"
