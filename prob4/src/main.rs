@@ -1,9 +1,15 @@
 extern crate time;
 
 
-use prob4::is_palidrome;
+use prob4::palidromes;
 
 
 fn main() {
-    println!("Hello, world!");
+    let t0: u64 = time::precise_time_ns();
+
+
+
+    let time_ms = (time::precise_time_ns() - t0) / 1000;
+
+    println!("Runtime: {:?} microseconds", time_ms);   //  runtime is about
 }
