@@ -1,1 +1,1 @@
-pub mod palindromes;
+pub mod palindr;

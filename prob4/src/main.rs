@@ -1,7 +1,7 @@
 extern crate time;
 
 
-use prob4::palidromes;
+use prob4::palindr;
 
 
 fn main() {
