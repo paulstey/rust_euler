@@ -16,7 +16,7 @@ pub fn is_palindrome(num: u64) -> bool {
 }
 
 
-pub fn reverse_int(x: u64) -> u64{
+fn reverse_int(x: u64) -> u64{
     let mut result = 0;
     let mut x_remaining = x;
 
