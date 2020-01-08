@@ -19,10 +19,10 @@ fn largest_palindrome_prod(max_n: u64) -> u64 {
 
 fn main() {
     let t0: u64 = time::precise_time_ns();
-    let soln = largest_palindrome_prod(999 as u64);
+    let soln = largest_palindrome_prod(999);
 
     let time_ms = (time::precise_time_ns() - t0) / 1000;
 
-    println!("{:?}", soln);
-    println!("Runtime: {:?} microseconds", time_ms);   //  runtime is about
+    println!("The solution is:  {:?}", soln);
+    println!("The run time is:  {:?} microseconds", time_ms);   //  runtime is about
 }
