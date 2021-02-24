@@ -1,7 +1,5 @@
 
-extern crate time;
-// extern crate prob3;
-
+use time;
 use prob3::primes;
 
 

@@ -1,6 +1,6 @@
 // Problem 2: Find the sum of even Fibonacci numbers less than 4_000_000
+use time;
 
-extern crate time;
 
 fn sum_even_fibs(n: u64) -> u64 {
     let mut a: u64 = 1;

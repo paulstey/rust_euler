@@ -1,4 +1,4 @@
-extern crate time;
+use time;
 
 fn is_case(n: i32) -> bool {
     let res = n % 3 == 0 || n % 5 == 0;
