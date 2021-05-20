@@ -1,5 +1,5 @@
-use std::f32;
 use std::env;
+use std::u64;
 
 use prob5::primes;
 
@@ -7,7 +7,7 @@ use prob5::primes;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let k = args[1] as f32;
+    let k = args[1].parse::<u64>().unwrap();
 
     let N = 1;
     let mut i = 1;
@@ -33,22 +33,3 @@ fn main() {
     }  
     println!("{:?}", N)
 }
-
-
-// fn lcm(a: i32, b: i32) -> i32 {
-//     let res = (a * b)/gcd(a, b);
-//     res
-// }
-
-
-// fn gcd(mut a: i32, mut b: i32) -> i32 {
-//     let mut t: i32 = 0;
-
-//     while b != 0 {
-//         t = b;
-//         b = a % b;
-//         a = t;
-//     }
-//     a
-// }
-
