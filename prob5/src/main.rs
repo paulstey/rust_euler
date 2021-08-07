@@ -1,37 +1,37 @@
 use std::env;
+use std::time::{Instant}; 
 
-use prob5::primes;
 
-
+fn is_factor(a: u64, n: u64) -> bool {
+    let result = n % a == 0_u64;
+    result
+} 
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let k = args[1].parse::<i32>().unwrap();
+    let k = args[1].parse::<u64>().unwrap();
 
-    let mut n = 1.0;
-    let mut i = 1;
-    let mut check = true;
-    let limit: f64 = (k as f64).sqrt();
+    let now = Instant::now();
 
-    let p = primes::primes(100);
-    let mut a = vec![0.0_f64; 100 as usize];
+    let mut found = false;
+    let mut n = k;
 
-    while p[i] <= k {
-        println!("{:?}", p[i]);
+    while !found {
+        for i in 2..=k {
 
-        
-        a[i] = 1.0;
-        if check {
-            if (p[i] as f64) < limit {
-                let a_i = (k as f64).ln()/(p[i] as f64).ln();
-                a[i] = a_i.floor();
+            if !is_factor(i, n) {
+                break;
             }
-            else {
-                check = false;
+            else if is_factor(i, n) && i == k {
+                let new_now = Instant::now();
+                
+                println!("The solution is:  {:?}", n);
+                
+                println!("{:?}", new_now.checked_duration_since(now));
+                found = true;
+                break
             }
-            n = n * f64::powf(p[i] as f64, a[i]);
-            i += 1;
         }
-    }  
-    println!("{:?}", n)
+        n = n + 1;
+    }
 }
