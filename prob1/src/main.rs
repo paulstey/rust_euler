@@ -21,5 +21,5 @@ fn main() {
     let runtime = (time::precise_time_ns() - t0) / 1000;
 
     println!("Solution: {:?}", res);
-    println!("Runtime: {:?} microseconds", runtime);   //  runtime is about 14 microseconds
+    println!("Runtime: {:?} microsecond", runtime);   //  runtime is about 1 microsecond
 }
