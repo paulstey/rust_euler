@@ -1,15 +1,14 @@
 use std::env;
-use std::time::{Instant}; 
+use std::time::Instant; 
 
 
-fn is_factor(a: u64, n: u64) -> bool {
-    let result = n % a == 0_u64;
-    result
+fn is_factor(a: i32, n: i32) -> bool {
+    n % a == 0
 } 
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let k = args[1].parse::<u64>().unwrap();
+    let k = args[1].parse::<i32>().unwrap();
 
     let now = Instant::now();
 
@@ -27,7 +26,10 @@ fn main() {
                 
                 println!("The solution is:  {:?}", n);
                 
-                println!("{:?}", new_now.checked_duration_since(now));
+                let runtime = new_now.checked_duration_since(now)
+                    .unwrap();
+
+                println!("{:?}", runtime);
                 found = true;
                 break
             }
