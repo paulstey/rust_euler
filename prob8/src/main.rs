@@ -1,11 +1,19 @@
 
 use std::fs;
+use std::io;
 
-fn main() -> Result<String, Box<dyn std::error::Error>> {
+fn read_txt_file(filename: &str) -> Result<String, io::Error> {
+    let dat = fs::read_to_string(filename)?;
+    Ok(dat)
+}
 
-    let dat = fs::read_to_string("data.txt")?.parse()?;
+fn main() -> Result<(), io::Error> {
+
+    let dat = read_txt_file("src/data.txt")?;
 
     println!("{:?}", dat);
 
-    Ok(dat)
+    Ok(())
 }
+
+
