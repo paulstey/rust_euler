@@ -1,4 +1,3 @@
-
 use std::fs;
 use std::io;
 
@@ -11,8 +10,12 @@ fn main() -> Result<(), io::Error> {
 
     let dat = read_txt_file("src/data.txt")?;
 
-    println!("{:?}", dat);
+    let num_vec: Vec<i32> = dat
+        .replace("\n", "")
+        .split_whitespace()
+        .map(|c| {c.parse()});
 
+    println!("{:?}", num_vec);
     Ok(())
 }
 
