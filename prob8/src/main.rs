@@ -10,10 +10,11 @@ fn main() -> Result<(), io::Error> {
 
     let dat = read_txt_file("src/data.txt")?;
 
-    let num_vec: Vec<i32> = dat
+    let num_vec = &dat
         .replace("\n", "")
-        .split_whitespace()
-        .map(|c| {c.parse()});
+        .iter_mut()
+        .collect();
+
 
     println!("{:?}", num_vec);
     Ok(())
