@@ -5,7 +5,7 @@ fn main() {
     let t0 = Instant::now();
     let mut pset = Sieve::new();
 
-    let max_n = 2_000_000; 
+    let max_n = 2_000_000;
     let prime_vec: Vec<u64> = pset.iter().take(max_n).collect();
 
     let mut res = 0_u64;
