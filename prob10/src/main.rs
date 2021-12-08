@@ -1,4 +1,4 @@
-use primes::{Sieve, PrimeSet};
+use primes::{PrimeSet, Sieve};
 use time::Instant;
 
 fn main() {
