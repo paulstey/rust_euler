@@ -1,31 +1,26 @@
-use std::error::Error;
-use rayon::prelude::*;
 use std::time::Instant;
 
 
-fn main() -> Result<(), E> {
+fn main() { 
     let t0 = Instant::now();
 
-    let mut start_num: Vec<i64> = (1..1_000_000).collect();
-
-    let res: Vec<_> = start_num
-        .par_iter_mut()
-        .enumerate()
-        .for_each(|x| {
-
-            collatz(*x.1);
-    })?;
-
-    let max = res
+    let mut res: Vec<_> = vec![0; 1_000_000];
+    
+    for i in 1..1_000_000 {
+        res[i] = collatz(i as i64); 
+    }
+   
+    let soln = res
         .iter()
         .max()
-        .unwrap();
-    let idx = res
-        .iter()
-        .position(|elem| {
-            elem == max
-        });
-    println!("{:?}", idx);
+        .unwrap(); 
+    
+    for i in 0..999_999 {
+        if res[i] == *soln {
+            println!("{:?}", i);
+        }
+    }
+
     println!("{:?}", t0.elapsed());
 }
 
@@ -33,8 +28,6 @@ fn main() -> Result<(), E> {
 fn collatz(n0: i64) -> i64 {
     let mut len = 1;
     let mut n = n0;
-
-    println!("{:?}", n0);
 
     while n != 1 {
         if n % 2 == 0 {
