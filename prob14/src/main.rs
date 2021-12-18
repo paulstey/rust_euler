@@ -1,5 +1,5 @@
 use std::time::Instant;
-
+use itertools::Itertools;
 
 fn main() { 
     let t0 = Instant::now();
@@ -12,15 +12,10 @@ fn main() {
    
     let soln = res
         .iter()
-        .max()
+        .position_max()
         .unwrap(); 
-    
-    for i in 0..999_999 {
-        if res[i] == *soln {
-            println!("{:?}", i);
-        }
-    }
 
+    println!("{:?}", soln); 
     println!("{:?}", t0.elapsed());
 }
 
