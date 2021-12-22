@@ -1,8 +1,7 @@
-use time::Instant;
 use num_bigint::BigInt;
+use time::Instant;
 
 fn factorial(n: i32) -> BigInt {
-
     let mut res: BigInt = BigInt::from(n);
 
     for m in 2..n {
