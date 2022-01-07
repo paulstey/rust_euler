@@ -12,7 +12,9 @@ fn main() {
         .map(|x| x.to_digit(10_u32).unwrap())
         .sum();
 
+    let t1 = Instant::now();
+
     println!("{:?}", soln);
     
-    println!("{:?}", t0.elapsed());
+    println!("{:?}", t1 - t0);
 }
