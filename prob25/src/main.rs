@@ -19,7 +19,7 @@ fn fib(n: usize) -> BigInt {
 
 fn main() {
     let t0 = Instant::now();
-    let mut idx: usize = 3;
+    let mut idx = 3;
     let mut soln: BigInt = BigInt::from(1);
 
     for i in 3..10_000 {
