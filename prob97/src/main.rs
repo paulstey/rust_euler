@@ -12,5 +12,5 @@ fn main() {
 
 
 
-    println!("{:?}", a * BigInt::from(pow(2, b)) + c);
+    println!("{:?}", a.checked_mul(&BigInt::from(pow(2, b))).unwrap() + c);
 }
