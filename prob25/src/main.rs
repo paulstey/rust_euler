@@ -1,4 +1,4 @@
-use std::time::Instant;
+use time::Instant;
 use num_bigint::BigInt;
 
 
