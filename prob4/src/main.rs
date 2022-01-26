@@ -1,5 +1,4 @@
-extern crate time;
-
+use time::Instant;
 use prob4::palindr;
 
 fn largest_palindrome_prod(max_n: u64) -> u64 {
@@ -18,11 +17,11 @@ fn largest_palindrome_prod(max_n: u64) -> u64 {
 }
 
 fn main() {
-    let t0: u64 = time::precise_time_ns();
+    let t0 = Instant::now();
     let soln = largest_palindrome_prod(999);
 
-    let time_ms = (time::precise_time_ns() - t0) / 1000;
+    let runtime = Instant::now() - t0; 
 
     println!("The solution is:  {:?}", soln);
-    println!("The run time is:  {:?} microseconds", time_ms);   //  runtime is about
+    println!("{:?}", runtime);   //  runtime is about
 }
