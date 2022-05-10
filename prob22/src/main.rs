@@ -5,15 +5,14 @@ fn main() {
     let t1 = Instant::now();
 
     let filename = "data/p022_names.txt";
-   
+
     let contents = fs::read_to_string(filename).expect("Error reading from file...");
-    
+
     let names = contents.replace('"', "");
 
     let mut names_vec: Vec<&str> = names.split(',').collect();
 
     names_vec.sort_unstable();
-
 
     let soln = sum_name_scores(&names_vec);
     let runtime = Instant::now() - t1;
