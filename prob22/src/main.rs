@@ -3,11 +3,8 @@ use time::Instant;
 
 fn main() {
     let t1 = Instant::now();
-
     let filename = "data/p022_names.txt";
-
     let contents = fs::read_to_string(filename).expect("Error reading from file...");
-
     let names = contents.replace('"', "");
 
     let mut names_vec: Vec<&str> = names.split(',').collect();
