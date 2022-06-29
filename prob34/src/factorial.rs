@@ -1,11 +1,28 @@
+//! /src/iterator.rs
+//!
 
-
-pub fn factorial_vec(n: usize) -> Vec<u64> {
-    let mut fib_nums = vec![1_u64; n]; 
-
-    for i in 2..n {
-        fib_nums[i] = fib_nums[i-1] * fib_nums[i-2];
-    }
-    fib_nums
+#[derive(Debug, Eq, PartialEq)]
+pub struct Factorial {
+    pair: (i64, i64),
 }
 
+impl Factorial {
+    pub fn new(start: i64) -> Self {
+        Factorial { pair: (start, 1) }
+    }
+}
+
+impl Iterator for Factorial {
+    type Item = (i64, i64);
+
+    fn next(&mut self) -> Option<Self::Item> {
+        if self.pair.0 > 1 {
+            self.pair.1 *= self.pair.0;
+            self.pair.0 -= 1;
+
+            Some(self.pair)
+        } else {
+            None
+        }
+    }
+}
