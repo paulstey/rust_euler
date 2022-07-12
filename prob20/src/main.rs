@@ -2,11 +2,8 @@ use num_bigint::BigInt;
 use time::Instant;
 
 fn factorial(n: i32) -> BigInt {
-    let mut res: BigInt = BigInt::from(n);
+    let res = (2..n).into_iter().product();
 
-    for m in 2..n {
-        res *= BigInt::from(m);
-    }
     res
 }
 
