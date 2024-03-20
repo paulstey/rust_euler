@@ -42,7 +42,7 @@ fn does_peter_win_game() -> bool {
 fn main() {
     let t1 = Instant::now();
 
-    let num_games = 20_000_000_000_000 as u64;
+    let num_games = 40_000_000_000_000 as u64;
 
     let peter_wins: u64 = (0..num_games)
         .into_par_iter()
