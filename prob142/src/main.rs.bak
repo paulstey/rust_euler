@@ -1,0 +1,57 @@
+use std::collections::BTreeSet;
+use time::Instant;
+
+fn get_perfect_squares(n_max: u64) -> BTreeSet<u64> {
+    let squares_vec: Vec<u64> = (1..(n_max + 1))
+        .into_iter()
+        .map(|n| (n * n) as u64)
+        .collect();
+
+    BTreeSet::from_iter(squares_vec)
+}
+
+fn get_possible_solutions(squares_btree: &BTreeSet<u64>, xyz_max: u64) -> Vec<u64> {
+    let mut candidates = Vec::new();
+
+    for z in 1..xyz_max as u64 {
+        for y in (z + 1)..xyz_max as u64 {
+            if squares_btree.contains(&(y + z)) && squares_btree.contains(&(y - z)) {
+                for x in (y + 1)..xyz_max as u64 {
+                    if squares_btree.contains(&(x + y))
+                        && squares_btree.contains(&(x - y))
+                        && squares_btree.contains(&(x + z))
+                        && squares_btree.contains(&(x - z))
+                    {
+                        let summation = x + y + z;
+
+                        println!("x = {x}, y = {y}, z = {z}, sum = {summation}");
+
+                        candidates.push(summation);
+                    }
+                }
+            }
+        }
+    }
+    candidates
+}
+
+fn main() {
+    let t1 = Instant::now();
+    let limit = 1_000_000 as u64;
+    let xyz_max = 1_000_000 as u64;
+
+    let squares_btree = get_perfect_squares(limit);
+
+    let candidates_vec = get_possible_solutions(&squares_btree, xyz_max);
+
+    let solution = candidates_vec.iter().min().unwrap();
+
+    // let solution = squares_btree.contains(&(99937 + 99816));
+    // let solution = squares_btree.contains(&199753);
+    let t2 = Instant::now();
+
+    // println!("{:?}", candidates_vec);
+    // println!("{:?}", squares_btree);
+    println!("{:?}", solution);
+    println!("{:?}", t2 - t1);
+}
