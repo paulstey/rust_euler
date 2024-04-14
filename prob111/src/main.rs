@@ -33,10 +33,10 @@ impl Prime {
     }
 }
 
-fn m(n: i32, d: u64, primes_vec: &[Prime]) -> i32 {
+fn m(_n: i32, d: u64, primes_vec: &[Prime]) -> i32 {
     let mut max_repeats = 0;
 
-    for _num_repeats in (1..n).rev() {
+    for _num_repeats in [9, 8] {
         for prime in primes_vec.iter() {
             let repeats = prime.contains(d);
 
@@ -47,13 +47,6 @@ fn m(n: i32, d: u64, primes_vec: &[Prime]) -> i32 {
     }
 
     max_repeats
-}
-
-fn _n(max_repeats: i32, d: u64, primes_vec: &[Prime]) -> i32 {
-    primes_vec
-        .iter()
-        .filter(|prime| prime.contains(d) == max_repeats)
-        .count() as i32
 }
 
 fn s(max_repeats: i32, d: u64, primes_vec: &[Prime]) -> u64 {
@@ -78,11 +71,10 @@ fn sum_qualifying_primes(n: i32, primes_vec: &[Prime]) -> u64 {
     // NOTE: This is column `M(4, d)` in the intructions
     let m_vec = max_repeated_digits(n, &primes_vec);
 
-    let mut sum_primes: u64 = 0;
-
-    for i in 0..10 {
-        sum_primes += s(m_vec[i], i as u64, primes_vec);
-    }
+    let sum_primes: u64 = (0..10)
+        .into_par_iter()
+        .map(|i| s(m_vec[i], i as u64, primes_vec))
+        .sum();
 
     sum_primes
 }
