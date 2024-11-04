@@ -1,5 +1,5 @@
-use std::time::Instant;
 use rayon::prelude::*;
+use std::time::Instant;
 
 fn to_base3_string(mut n: usize) -> String {
     if n == 0 {
@@ -32,13 +32,17 @@ fn main() {
 
     let n_max = 2_000_000_000;
 
-    let base3_nums_base10: Vec<u64> = (1..n_max + 1).collect::<Vec<_>>().par_iter()
+    let base3_nums_base10: Vec<u64> = (1..n_max + 1)
+        .collect::<Vec<_>>()
+        .par_iter()
         .map(|&n| to_base3_string(n).parse().unwrap())
         .collect::<Vec<_>>();
 
-    let smallest_multiples: Vec<_> = (1..=10000).collect::<Vec<_>>().par_iter().map(|&i| {
-        f(i, &base3_nums_base10).expect("Error: value of f() is None") as f64 / i as f64
-    }).collect();
+    let smallest_multiples: Vec<_> = (1..=10000)
+        .collect::<Vec<_>>()
+        .par_iter()
+        .map(|&i| f(i, &base3_nums_base10).expect("Error: value of f() is None") as f64 / i as f64)
+        .collect();
 
     let duration = start.elapsed();
 
