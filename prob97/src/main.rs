@@ -40,3 +40,21 @@ fn main() {
 
     println!("{:?}", solution);
 }
+
+// Write a test for our function `fast_exponentiation` to ensure it works correctly.
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_fast_exponentiation() {
+        // Test the function with a known case.
+        assert_eq!(fast_exponentiation(2, 10), 1024);
+        // Test with a larger exponent.
+        assert_eq!(fast_exponentiation(3, 5), 243);
+        // Test with an odd exponent.
+        assert_eq!(fast_exponentiation(5, 3), 125);
+        // Test with a base of 1.
+        assert_eq!(fast_exponentiation(1, 1000), 1);
+    }
+}
