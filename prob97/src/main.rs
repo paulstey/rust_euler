@@ -32,7 +32,6 @@ fn main() {
 
     let multiplication_result: u128 = 28433_u128 * fast_exponentiation(2, 7830457);
 
-    
     // Calculate the remainder of `result` when divided by 10 billion, add 1
     // and print the result.
     let solution = multiplication_result % 10_000_000_000 + 1;
