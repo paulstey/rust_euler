@@ -16,6 +16,4 @@
 
 #-------- End of Slurm commands -------------------------
 
-module load rust 
-
 cargo run --release

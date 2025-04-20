@@ -1,5 +1,6 @@
 use std::collections::BTreeSet;
 
+// This function finds all factors of a given number and returns them as a vector.
 fn find_factors(number: u64) -> Vec<u64> {
     let mut factors = Vec::new();
     let limit = (number as f64).sqrt() as u64;
@@ -18,6 +19,7 @@ fn find_factors(number: u64) -> Vec<u64> {
     factors
 }
 
+// This function converts the vector of factors into a BTreeSet for efficient storage and lookup.
 pub fn get_factors_btset(n: u64) -> BTreeSet<u64> {
     let factors_vec: Vec<_> = find_factors(n);
 
@@ -30,6 +32,7 @@ pub fn get_factors_btset(n: u64) -> BTreeSet<u64> {
     factors_btset
 }
 
+// This function extracts the digits of a number and returns them as a vector.
 fn get_digits(n: u64) -> Vec<u64> {
     let mut nums_vec = Vec::new();
     let mut n_copy = n;
@@ -46,6 +49,7 @@ fn get_digits(n: u64) -> Vec<u64> {
     nums_vec
 }
 
+// This function checks if two numbers are digit permutations of each other.
 pub fn is_digit_permutation(n: u64, phi_of_n: u64) -> bool {
     let mut n_digits = get_digits(n);
     let mut phi_of_n_digits = get_digits(phi_of_n);
