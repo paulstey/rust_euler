@@ -31,7 +31,7 @@ fn phi(n: u64, factors_btmap: &BTreeMap<u64, BTreeSet<u64>>) -> u64 {
 fn main() {
     let t1 = Instant::now();
 
-    const N_MAX: u64 = 100_000;
+    const N_MAX: u64 = 10_000_000;
 
     // Precompute the factors for all numbers in the range [1, 10,000,000] using parallel iteration.
     let factors_btmap = (1..N_MAX)
