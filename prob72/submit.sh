@@ -4,7 +4,7 @@
 # In order to submit this job to Slurm, run the command below from the terminal.
 # `sbatch submit.sh`
 
-#SBATCH --time=6:00:00
+#SBATCH --time=1:00:00
 #SBATCH --partition=batch
 #SBATCH --nodes=1
 #SBATCH --constraint=192core
