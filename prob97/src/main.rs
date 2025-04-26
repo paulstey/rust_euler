@@ -41,7 +41,6 @@ fn main() {
     println!("{:?}", solution);
 }
 
-// Write a test for our function `fast_exponentiation` to ensure it works correctly.
 #[cfg(test)]
 mod tests {
     use super::*;
