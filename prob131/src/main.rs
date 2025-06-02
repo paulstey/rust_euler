@@ -2,10 +2,10 @@ use primal::Sieve;
 use rayon::prelude::*;
 use std::time::Instant;
 
-const P_MAX: u64 = 100;
-const N_MAX: u64 = 50;
+const P_MAX: u64 = 1_000_000;
+const N_MAX: u64 = 1_000_000;
 
-fn f(n: &mut u64, p: &u64) -> u64 {
+fn f(n: u64, p: u64) -> u64 {
     n.pow(3) + n.pow(2) * p
 }
 
@@ -19,25 +19,24 @@ fn is_perfect_cube(n: u64) -> bool {
     cube_root * cube_root * cube_root == n.try_into().unwrap()
 }
 
-fn prime_satisfies_condition(p: u64, eligible_values_of_n: &mut Vec<u64>) -> bool {
-    for n in eligible_values_of_n {
-        let f_of_p = f(&mut n, &p);
+fn prime_satisfies_condition(p: u64, eligible_values_of_n: &Vec<u64>) -> bool {
+    for &n in eligible_values_of_n {
+        let f_of_p = f(n, p);
 
-        if is_perfect_cube(f_of_p as u64) {
-            eligible_values_of_n.retain(|&num| num != *n);
-
+        if is_perfect_cube(f_of_p) {
             return true;
         }
     }
     false
 }
 
-fn get_primes_under_pmax() -> Vec<usize> {
+fn get_primes_under_pmax() -> Vec<u64> {
     let sieve = Sieve::new(P_MAX as usize);
 
     sieve
         .primes_from(2)
         .take_while(|&p| p < P_MAX as usize)
+        .map(|p| p as u64)
         .collect()
 }
 
@@ -46,16 +45,16 @@ fn main() {
 
     let candidate_primes = get_primes_under_pmax();
 
-    let mut eligible_values_of_n: Vec<u64> = (1..=N_MAX).collect();
+    let eligible_values_of_n: Vec<u64> = (1..=N_MAX).collect();
 
-    let result: u64 = candidate_primes
-        .par_iter_mut()
-        .filter(|&num| prime_satisfies_condition(*num, &mut eligible_values_of_n))
-        .len();
+    let result: usize = candidate_primes
+        .par_iter()
+        .filter(|&num| prime_satisfies_condition(*num, &eligible_values_of_n))
+        .count();
 
     let t2 = Instant::now();
 
-    println!("Sum of perfect squares: {}", result);
+    println!("Number of primes that qualify: {}", result);
 
     println!("Elapsed time: {:?}", t2 - t1);
 }
