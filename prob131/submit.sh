@@ -7,12 +7,12 @@
 #SBATCH --time=1:00:00
 #SBATCH --partition=batch
 #SBATCH --nodes=1
-#SBATCH --constraint=192core
-#SBATCH --cpus-per-task=192
+#SBATCH --constraint=48core
+#SBATCH --cpus-per-task=48
 #SBATCH --mem=36G
-#SBATCH --job-name prob211
-#SBATCH --output prob211-%j.out
-#SBATCH --error prob211-%j.err
+#SBATCH --job-name prob131
+#SBATCH --output prob131-%j.out
+#SBATCH --error prob131-%j.err
 
 #-------- End of Slurm commands -------------------------
 
