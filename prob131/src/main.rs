@@ -4,7 +4,6 @@ use std::time::Instant;
 
 const P_MAX: u64 = 1_000_000;
 
-
 fn find_qualifying_primes(sieve: &Sieve) -> HashSet<u64> {
     let mut qualifying_primes = HashSet::new();
     let sieve_limit = sieve.upper_bound() as u64;
@@ -16,9 +15,11 @@ fn find_qualifying_primes(sieve: &Sieve) -> HashSet<u64> {
             let k_cubed = k * k * k;
             let p = k_cubed - m_cubed;
 
+
             if p < P_MAX && p < sieve_limit && p > 1 && sieve.is_prime(p as usize) {
                 qualifying_primes.insert(p);
             }
+
         }
     }
 
@@ -49,6 +50,7 @@ mod tests {
         // For small primes, we should find some solutions
         // Based on the mathematical pattern, some known small solutions should exist
         assert!(!result.is_empty(), "Should find at least some qualifying primes");
+
     }
 
     #[test]
@@ -61,6 +63,7 @@ mod tests {
         assert!(result.contains(&7), "p = 7 should be a qualifying prime");
     }
 
+
     #[test]
     fn test_function_does_not_panic() {
         let sieve = Sieve::new(100);
@@ -69,6 +72,7 @@ mod tests {
         // Just verify the function runs without panicking
         assert!(result.len() >= 0);
     }
+
 
     #[test]
     fn test_mathematical_relationship_for_small_primes() {
